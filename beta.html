@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NMT Home Massage - Massage Body</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f6f5f0; 
+            --primary-green: #35503e; 
+            --text-grey: #4a4a4a; 
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-color);
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-grey);
+            overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; position: sticky; top: 0;
+            background-color: rgba(246, 245, 240, 0.95); backdrop-filter: blur(5px);
+            z-index: 100; border-bottom: 1px solid rgba(53, 80, 62, 0.1);
+        }
+        .nav-links { display: flex; gap: 30px; }
+        .navbar a {
+            text-decoration: none; color: var(--text-grey); font-weight: 500;
+            text-transform: uppercase; letter-spacing: 1px; font-size: 13px; transition: color 0.3s;
+        }
+        .navbar a:hover { color: var(--primary-green); font-weight: 600; }
+        
+        section { padding: 60px 5%; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box;}
+
+        /* --- PHẦN 1: TRANG CHỦ --- */
+        .hero { 
+            text-align: center; 
+            padding-top: 80px; 
+            padding-bottom: 60px; 
+            max-width: 1200px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+        }
+        .breadcrumb { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: #7a7770; margin-bottom: 20px; }
+        .main-title { font-family: 'Cormorant Garamond', serif; font-size: 90px; font-weight: 500; font-style: italic; color: var(--primary-green); margin: 0 0 30px 0; line-height: 1.1; }
+        .description { font-size: 15px; line-height: 2; max-width: 750px; margin: 0 auto; }
+
+        /* Đường kẻ phân cách */
+        .divider { width: 80%; height: 1px; background: rgba(53, 80, 62, 0.1); margin: 20px auto; }
+
+        /* --- PHẦN 2: DỊCH VỤ --- */
+        .intro-section { text-align: center; max-width: 900px; margin: 0 auto; padding-top: 60px; padding-bottom: 0px; }
+        .intro-title { font-family: 'Cormorant Garamond', serif; font-size: 85px; font-weight: 500; font-style: italic; color: var(--primary-green); margin: 0 0 10px 0; line-height: 1; letter-spacing: -1px; }
+
+        /* Grid Dịch Vụ (4 Cột) */
+        .grid-section { padding-top: 40px; padding-bottom: 80px; }
+        .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .grid-item { display: flex; flex-direction: column; align-items: flex-start; }
+        .grid-item img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 15px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .grid-item span { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; font-weight: 500; color: var(--primary-green); }
+
+        /* --- FOOTER & ZALO --- */
+        footer { background-color: var(--primary-green); color: #f6f5f0; text-align: center; padding: 40px 20px; margin-top: auto; }
+        
+        .zalo-btn {
+            position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-green);
+            width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            box-shadow: 0 4px 15px rgba(53, 80, 62, 0.4); z-index: 1000; animation: bounce 2s infinite;
+        }
+        .zalo-btn svg { width: 30px; height: 30px; fill: #f6f5f0; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .intro-title { font-size: 65px; }
+        }
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; gap: 40px; }
+            .intro-title { font-size: 50px; }
+            .main-title { font-size: 60px; margin-bottom: 20px; }
+            .description { font-size: 14px; text-align: justify; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="#trang-chu">Trang Chủ</a>
+        </div>
+        <div class="logo">
+            <!-- Đã xóa logo tại đây -->
+        </div>
+        <div class="nav-links">
+            <a href="#dich-vu">Dịch Vụ</a>
+        </div>
+    </nav>
+
+    <!-- PHẦN 1: TRANG CHỦ -->
+    <section id="trang-chu" class="hero">
+        <p class="breadcrumb">Trang chủ / Massage body</p>
+        
+        <h1 class="main-title">Massage body</h1>
+        <p class="description">
+            Dành ra một khoảng nghỉ, đi chậm lại một chút để lắng nghe cơ thể sau những ngày dài bận rộn ngoài kia, bạn nhé! Liệu pháp massage body tại NMT Home Massage là sự kết hợp nhịp nhàng giữa những động tác xoa bóp, day ấn dịu dàng và tinh dầu thiên nhiên thuần khiết. Không chỉ đơn thuần là xoa dịu các bó cơ đang mỏi mệt, liệu trình này còn là cách NMT Home Massage giúp bạn khơi thông dòng chảy huyết mạch, cân bằng lại nguồn năng lượng bên trong, trả lại sự nhẹ nhõm trọn vẹn cho cả thân – tâm – trí.
+        </p>
+    </section>
+
+    <!-- Đường cắt ngang -->
+    <div class="divider"></div>
+
+    <!-- PHẦN 2: DỊCH VỤ -->
+    <section id="dich-vu" class="intro-section">
+        <h1 class="intro-title">Dịch vụ</h1>
+    </section>
+
+    <!-- Danh sách dịch vụ 4 cột -->
+    <section class="grid-section">
+        <div class="services-grid">
+            <div class="grid-item">
+                <img src="PVQ09546-scaled-1536x1024.webp" alt="Massage cổ vai gáy">
+                <span>Massage cổ vai gáy</span>
+            </div>
+            <div class="grid-item">
+                <img src="PVQ09515-scaled-1536x1024.webp" alt="Massage tay">
+                <span>Massage tay</span>
+            </div>
+            <div class="grid-item">
+                <img src="service-4-scaled-1024x1536.webp" alt="Massage body">
+                <span>Massage body</span>
+            </div>
+            <div class="grid-item">
+                <img src="chann-1536x1023.webp" alt="Massage chân">
+                <span>Massage chân</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">
+            <!-- Đã xóa logo ở footer tại đây -->
+        </div>
+    </footer>
+
+    <!-- NÚT ZALO -->
+    <!-- Đã cập nhật link Zalo sang số 0559071145 -->
+    <a href="https://zalo.me/0559071145" class="zalo-btn" target="_blank" aria-label="Liên hệ Zalo ngay">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12zM7 9h10v2H7z"/></svg>
+    </a>
+
+</body>
+</html>
