@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f6f5f0; 
+            /* Màu nền tông trắng ngà/be ấm */
+            --bg-color: #f5f2eb; 
             --primary-green: #35503e; 
             --text-grey: #4a4a4a; 
         }
@@ -29,15 +30,30 @@
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; position: sticky; top: 0;
-            background-color: rgba(246, 245, 240, 0.95); backdrop-filter: blur(5px);
+            background-color: rgba(245, 242, 235, 0.95); backdrop-filter: blur(5px);
             z-index: 100; border-bottom: 1px solid rgba(53, 80, 62, 0.1);
         }
-        .nav-links { display: flex; gap: 30px; }
+        
+        /* Cập nhật phần chia không gian để Logo nằm giữa tuyệt đối (dịch sang phải thêm) */
+        .nav-links { display: flex; gap: 30px; flex: 1; }
+        .nav-links.left { justify-content: flex-start; }
+        .nav-links.right { justify-content: flex-end; }
+        
         .navbar a {
             text-decoration: none; color: var(--text-grey); font-weight: 500;
             text-transform: uppercase; letter-spacing: 1px; font-size: 13px; transition: color 0.3s;
         }
         .navbar a:hover { color: var(--primary-green); font-weight: 600; }
+        
+        /* CSS cho Logo */
+        .logo { display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+        .logo img {
+            height: 60px; /* Điều chỉnh chiều cao của logo tại đây */
+            width: auto;
+            object-fit: contain;
+            /* Nếu bạn muốn logo lệch hẳn sang phải khỏi tâm, hãy bỏ comment dòng dưới và tăng số px lên */
+            /* transform: translateX(20px); */ 
+        }
         
         section { padding: 60px 5%; max-width: 1400px; margin: 0 auto; width: 100%; box-sizing: border-box;}
 
@@ -63,16 +79,83 @@
         .intro-section { text-align: center; max-width: 900px; margin: 0 auto; padding-top: 60px; padding-bottom: 0px; }
         .intro-title { font-family: 'Cormorant Garamond', serif; font-size: 85px; font-weight: 500; font-style: italic; color: var(--primary-green); margin: 0 0 10px 0; line-height: 1; letter-spacing: -1px; }
 
-        /* Grid Dịch Vụ (4 Cột) */
         .grid-section { padding-top: 40px; padding-bottom: 80px; }
         .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
-        .grid-item { display: flex; flex-direction: column; align-items: flex-start; }
-        .grid-item img { width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 15px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        
+        .grid-item { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        
+        .grid-item img { 
+            width: 100%; 
+            aspect-ratio: 3/4; 
+            object-fit: cover; 
+            margin-bottom: 15px; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+            transition: transform 0.4s ease, box-shadow 0.4s ease; 
+        }
+        
+        .grid-item:hover img {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
         .grid-item span { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; font-weight: 500; color: var(--primary-green); }
 
-        /* --- FOOTER & ZALO --- */
-        footer { background-color: var(--primary-green); color: #f6f5f0; text-align: center; padding: 40px 20px; margin-top: auto; }
-        
+        /* --- FOOTER / PHẦN CONTACT --- */
+        footer { 
+            background-color: var(--primary-green); 
+            text-align: center; 
+            padding: 40px 20px; 
+            margin-top: auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap; 
+        }
+
+        .social-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--bg-color); 
+            font-size: 15px;
+            font-weight: 400;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-item:hover {
+            opacity: 0.8; 
+            transform: translateY(-2px);
+        }
+
+        .social-item svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Phần Bản Quyền */
+        .copyright {
+            margin-top: 30px;
+            font-size: 13px;
+            color: rgba(245, 242, 235, 0.6);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* NÚT ZALO NỔI GÓC PHẢI DƯỚI */
         .zalo-btn {
             position: fixed; bottom: 30px; right: 30px; background-color: var(--primary-green);
             width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
@@ -91,6 +174,12 @@
             .intro-title { font-size: 50px; }
             .main-title { font-size: 60px; margin-bottom: 20px; }
             .description { font-size: 14px; text-align: justify; }
+            .social-links { gap: 20px; }
+            .copyright { margin-top: 20px; }
+            
+            .navbar { flex-direction: column; gap: 15px; }
+            .nav-links { justify-content: center !important; }
+            .logo img { height: 50px; transform: none; }
         }
     </style>
 </head>
@@ -98,14 +187,15 @@
 
     <!-- NAVBAR -->
     <nav class="navbar">
-        <div class="nav-links">
+        <div class="nav-links left">
             <a href="#trang-chu">Trang Chủ</a>
         </div>
         <div class="logo">
-            <!-- Đã xóa logo tại đây -->
+            <img src="logo.png" alt="NMT Home Massage Logo">
         </div>
-        <div class="nav-links">
+        <div class="nav-links right">
             <a href="#dich-vu">Dịch Vụ</a>
+            <a href="#lien-he">Liên Hệ</a>
         </div>
     </nav>
 
@@ -149,15 +239,26 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-logo">
-            <!-- Đã xóa logo ở footer tại đây -->
+    <!-- FOOTER / CONTACT -->
+    <footer id="lien-he">
+        <div class="social-links">
+            <a href="#" class="social-item" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="social-item" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.14 2 11.25c0 2.915 1.508 5.498 3.864 7.151v3.918l3.528-1.932c.833.23 1.714.363 2.608.363 5.523 0 10-4.14 10-9.25S17.523 2 12 2zm1.096 12.392-2.736-2.923-5.36 2.923 5.922-6.284 2.784 2.924 5.305-2.924-5.915 6.284z"/></svg>
+                <span>Messenger</span>
+            </a>
+            <a href="https://zalo.me/0559071145" class="social-item" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12zM7 9h10v2H7z"/></svg>
+                <span>Zalo</span>
+            </a>
         </div>
+        <div class="copyright">©2026 NMT Home Massage</div>
     </footer>
 
-    <!-- NÚT ZALO -->
-    <!-- Đã cập nhật link Zalo sang số 0559071145 -->
+    <!-- NÚT ZALO NỔI GÓC PHẢI DƯỚI -->
     <a href="https://zalo.me/0559071145" class="zalo-btn" target="_blank" aria-label="Liên hệ Zalo ngay">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12zM7 9h10v2H7z"/></svg>
     </a>
